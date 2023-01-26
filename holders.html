@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Page</title>
+</head>
+<body>
+  <form>
+    <label for="token-address">Enter Solana Token Address:</label>
+    <input type="text" id="token-address" name="token-address">
+    <br>
+    <button type="button" onclick="downloadFile()">Download</button>
+  </form>
+  <style>
+    form {
+      width: 300px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+    }
+    button[type="button"] {
+      width: 100%;
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button[type="button"]:hover {
+      background-color: #45a049;
+    }
+  </style>
+  
+  <script>
+            function downloadFile() {
+        var tokenAddress = document.getElementById("token-address").value;
+        var limit = 100;
+        var offset = 0;
+        var holders = [];
+        var csvData = "address,owner,amount\n";
+        var totalHolders = 0;
+        var fileName = "tokenHolders.csv";
+        var link = document.createElement("a");
+
+        function getHolders() {
+            var url = `https://public-api.solscan.io/token/holders?tokenAddress=${tokenAddress}&limit=${limit}&offset=${offset}`;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    holders = holders.concat(data.data);
+                    totalHolders = data.total;
+                    if (holders.length < totalHolders) {
+                        offset += limit;
+                        getHolders();
+                    } else {
+                        holders.forEach(function(holder) {
+                            csvData += holder.address + "," + holder.owner + "," + (holder.amount / (10 ** holder.decimals)) + "\n";
+                        });
+                        var blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+                        if (link.download !== undefined) {
+                            var url = URL.createObjectURL(blob);
+                            link.setAttribute("href", url);
+                            link.setAttribute("download", fileName);
+                            link.style = "visibility:hidden";
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        }
+                    }
+                })
+                .catch(error => console.log(error));
+        }
+        getHolders();
+    }
+
+
+</script>
+
+</body>
+</html>
