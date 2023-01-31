@@ -10,20 +10,30 @@
   <form>
     <label for="token-address" >Enter Solana Token Address:</label>
     <input type="text" id="token-address" name="token-address" placeholder="Enter token address">
-    <button type="button" id='downloadButton' onclick="downloadFile()">Download Solana Holders</button>
+    <button type="button" id='downloadButtonSol' onclick="downloadFile()">Download Solana Holders</button>
     <div id="loadingSpinner" style="display: none;">Loading...</div>
   </form>
   <br>
     </div>
     <div>
         <form>
-  <label for="token-address">Enter Energi Token Address:</label>
-    <input type="text" id="tokenAddressInput" placeholder="Enter token address">
-    <button type="button" id="downloadButton">Download Energi Holders</button>
+  <label for="token-address">Enter Harmony Token Address:</label>
+    <input type="text" id="tokenAddressInputHar" placeholder="Enter token address">
+    <button type="button" id="downloadButtonHar">Download Harmony Holders</button>
     <div id="loadingSpinner" style="display: none;">Loading...</div>
     </form>
+    </div>
+    <br>
+    <div>
+    <form>
+      <label for="token-address">Enter Energi Token Address:</label>
+      <input type="text" id="tokenAddressInputEne" placeholder="Enter token address">
+      <button type="button" id="downloadButtonEne">Download Energi Holders</button>
+    </form>
 </div>
-<script src="energiscan.js"></script>
 <script src="solscan.js"></script>
+<script src="harmonyscan.js"></script>
+<script src="energiscan.js"></script>
+
 </body>
 </html>

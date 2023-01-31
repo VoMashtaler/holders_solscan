@@ -12,7 +12,7 @@ function downloadFile() {
         var url = `https://public-api.solscan.io/token/holders?tokenAddress=${tokenAddress}&limit=${limit}&offset=${offset}`;
 
         document.querySelector("#loadingSpinner").style.display = "block";
-        document.querySelector("#downloadButton").disabled = true;
+        document.querySelector("#downloadButtonSol").disabled = true;
         
         fetch(url)
             .then(response => response.json())
@@ -36,14 +36,14 @@ function downloadFile() {
                         link.click();
                         document.body.removeChild(link);
                           document.querySelector("#loadingSpinner").style.display = "none";
-    document.querySelector("#downloadButton").disabled = false;
+    document.querySelector("#downloadButtonSol").disabled = false;
                     }
                 }
             })
             
             .catch(error => console.log(error));
             document.querySelector("#loadingSpinner").style.display = "none";
-            document.querySelector("#downloadButton").disabled = false;
+            document.querySelector("#downloadButtonSol").disabled = false;
     }
 
     getHolders();
