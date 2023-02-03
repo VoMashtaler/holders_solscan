@@ -3,9 +3,12 @@
 <head>
   <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
     <link rel="stylesheet" type="text/css" href="styles.css" />
-  <title>My Page</title>
+  <title>TrustArmy Helper</title>
 </head>
 <body>
+  <div>
+    <a href="https://medium.com/@mashtalerv.p/trustarmy-full-instruction-with-all-details-9856cc111207">Work instruction</a>
+  </div>
     <div id="solana">
   <form>
     <label for="token-address" >Enter Solana Token Address:</label>
@@ -13,8 +16,8 @@
     <button type="button" id='downloadButtonSol' onclick="downloadFile()">Download Solana Holders</button>
     <div id="loadingSpinner" style="display: none;">Loading...</div>
   </form>
+</div>
   <br>
-    </div>
     <div>
         <form>
   <label for="token-address">Enter Harmony Token Address:</label>
@@ -30,10 +33,27 @@
       <input type="text" id="tokenAddressInputEne" placeholder="Enter token address">
       <button type="button" id="downloadButtonEne">Download Energi Holders</button>
     </form>
+  </div>
+    <br>
+    <div>
+    <form>
+      <label for="token-address">Enter Step Token Address:</label>
+      <input type="text" id="tokenAddressInputStep" placeholder="Enter token address">
+      <button type="button" id="downloadButtonStep">Download Step Holders</button>
+    </form>
+  </div>
+    <br>
+    <div>
+    <form>
+      <label for="token-address">Enter Metis Token Address:</label>
+      <input type="text" id="tokenAddressInputMetis" placeholder="Enter token address">
+      <button type="button" id="downloadButtonMetis">Download Metis Holders</button>
+    </form>
 </div>
 <script src="solscan.js"></script>
 <script src="harmonyscan.js"></script>
 <script src="energiscan.js"></script>
-
+<script src="stepscan.js"></script>
+<script src="metisscan.js"></script>
 </body>
 </html>
